@@ -22,6 +22,9 @@ import java.util.List;
 @RequestMapping(value = "/users")
 public class UserResource {
 
+    //Essa classe não chama o banco diretamente, ela chama o serviço
+    //O controlador delega a lógica para o serviço
+    //Ele só cuida da entrada HTTP e da resposta HTTP.
     @Autowired
     private UserService service;
 
@@ -29,14 +32,17 @@ public class UserResource {
     @GetMapping
     //É uma reposta HTTP que contém um objeto USER e o status da requisição.
     //Dentro desse metodo é criado um usuário ficticio e retorna ele como resposta
+    // Retorna todos os usuários como JSON
     public ResponseEntity<List<User>> findAll(){
 
         List<User> list =  service.findAll();
 
       return ResponseEntity.ok().body(list);
     }
-
+    //Adicionando o valor /{id} no final da requisição, retorna o usuário com esse ID
+    //ResponseEntity é uma classe do Spring que representa toda a resposta HTTP.
     @GetMapping(value = "/{id}")
+    //PathVariable diz ao Spring que o valor do parâmetro id vem da URL.
     public ResponseEntity<User> findById(@PathVariable Long id){
         User obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
