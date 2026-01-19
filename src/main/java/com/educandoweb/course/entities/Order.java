@@ -8,7 +8,10 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 //Dizendo que a classe representa uma tabela no banco e o nome dessa tabela
 @Entity
 @Table(name = "tb_order")
@@ -27,6 +30,12 @@ public class Order implements Serializable {
     @JoinColumn(name = "client_id")//Cria a coluna client_id na tabela tb_order  que é a chave estrangeira apontando para tb_user
    //cada pedido tem um cliente associado.
     private User client;
+
+
+    @OneToMany(mappedBy = "id.order")
+    private Set<OrderItem> items = new HashSet<>();
+
+
 
     public Order() {}
 
@@ -68,6 +77,10 @@ public class Order implements Serializable {
 
     public void setClient(User client) {
         this.client = client;
+    }
+
+    public Set<OrderItem> getItems() {
+        return items;
     }
 
     @Override
