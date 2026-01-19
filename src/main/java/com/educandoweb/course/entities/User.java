@@ -1,14 +1,22 @@
 package com.educandoweb.course.entities;
 
+import jakarta.persistence.*;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
 
 //Serializable permite que as classes possam se comunicar com a Web
+//Dizendo ao banco que essa é uma entidade e o nome da tabela a ser criada
+@Entity
+@Table(name = "tb_user")
 public class User  implements Serializable {
 
-private Long id;
+    @Id
+    //Estratégia de auto incremento para o ID
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String email;
     private String phone;
