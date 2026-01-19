@@ -1,22 +1,27 @@
 package com.educandoweb.course.entities;
 
 import com.educandoweb.course.repositories.UserRepository;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
-
+//Dizendo que a classe representa uma tabela no banco e o nome dessa tabela
 @Entity
 @Table(name = "tb_order")
 public class Order implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id //-> Chave primária
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //-> O banco gera o valor automaticamente
     private Long id;
-    private Instant moment;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'",timezone = "GMT")
+    private Instant moment; //Usado para representar um ponto específico no tempo
+
+    @ManyToOne //Mutios pedidos estão relacionados a um usuário só
+    @JoinColumn(name = "client_id")//Cria a coluna client_id na tabela tb_order  que é a chave estrangeira apontando para tb_user
+   //cada pedido tem um cliente associado.
     private User client;
 
     public Order() {}

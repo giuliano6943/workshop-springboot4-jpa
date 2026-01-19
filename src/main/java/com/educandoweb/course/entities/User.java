@@ -1,5 +1,6 @@
 package com.educandoweb.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -25,7 +26,9 @@ public class User  implements Serializable {
     private String password;
 
     //Associations
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client") //Um usuário pode ter varios pedidos
+    //mappedBy = "client" -> Indica que o lado dono da relação é o campo client na classe order
+    @JsonIgnore
     private List<Order> orders = new ArrayList<>();
 
 
