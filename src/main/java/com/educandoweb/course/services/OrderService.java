@@ -8,23 +8,34 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-//@Service diz ao spring que a classe é um componente de serviço
-//O spring gerencia a classe como se ela tivesse pronta para ser injetada em outras partes do sistema
+/**
+ * Serviço responsável por encapsular a lógica de acesso a dados de pedidos.
+ *
+ * Essa camada delega operações ao OrderRepository e pode conter regras de negócio
+ * relacionadas a pedidos.
+ */
 @Service
 public class OrderService {
-    //Injeção de dependencia da classe OrderRepository
-    //Isso permite que você use os métodos do JPA (findAll, findById, save, etc.) sem instanciar nada manualmente.
+
     @Autowired
     private OrderRepository repository;
 
-    //Utilizando o metodo que traz todos os usuários
+    /**
+     * Retorna todos os pedidos cadastrados.
+     *
+     * @return lista de pedidos
+     */
     public List<Order> findAll() {
         return repository.findAll();
     }
-    //Busca um usuário por id.
-    //Usa o Optional para evitar NullPointerException
-    //O Optional é usado porque o resultado da busca pode não existir
-    //Futuramente vamos tratar essa excessão, caso nao exista o usuário com o ID passado.
+
+    /**
+     * Busca um pedido pelo ID.
+     *
+     * @param id identificador do pedido
+     * @return o pedido encontrado
+     * @throws java.util.NoSuchElementException se não existir pedido com o ID informado
+     */
     public Order findById(Long id) {
         Optional<Order> obj = repository.findById(id);
         return obj.get();

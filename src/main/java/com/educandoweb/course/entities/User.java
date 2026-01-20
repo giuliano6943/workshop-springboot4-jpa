@@ -3,37 +3,44 @@ package com.educandoweb.course.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
-//Serializable permite que as classes possam se comunicar com a Web
-//Dizendo ao banco que essa é uma entidade e o nome da tabela a ser criada
+/**
+ * Entidade que representa um usuário do sistema.
+ * Mapeada para a tabela "tb_user".
+ * Cada usuário pode ter vários pedidos associados.
+ */
 @Entity
 @Table(name = "tb_user")
-public class User  implements Serializable {
+public class User implements Serializable {
 
     @Id
-    //Estratégia de auto incremento para o ID
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto incremento no banco
     private Long id;
+
     private String name;
     private String email;
     private String phone;
     private String password;
 
-    //Associations
-    @OneToMany(mappedBy = "client") //Um usuário pode ter varios pedidos
-    //mappedBy = "client" -> Indica que o lado dono da relação é o campo client na classe order
+    /**
+     * Associação com pedidos (Order).
+     * Um usuário pode ter vários pedidos.
+     * O lado dono da relação é o campo "client" na classe Order.
+     *
+     * @JsonIgnore evita loop infinito na serialização JSON.
+     */
+    @OneToMany(mappedBy = "client")
     @JsonIgnore
     private List<Order> orders = new ArrayList<>();
 
+    // Construtor vazio (obrigatório para JPA)
+    public User() {}
 
-    public User(){}
-
+    // Construtor completo
     public User(Long id, String name, String email, String phone, String password) {
         this.id = id;
         this.name = name;
@@ -42,53 +49,31 @@ public class User  implements Serializable {
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
-    }
+    // Getters e Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getName() {
-        return name;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
 
-    public String getEmail() {
-        return email;
-    }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    /**
+     * Retorna a lista de pedidos associados ao usuário.
+     */
+    public List<Order> getOrders() { return orders; }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
+    // equals e hashCode baseados no ID
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-
         User user = (User) o;
         return Objects.equals(id, user.id);
     }
@@ -97,6 +82,4 @@ public class User  implements Serializable {
     public int hashCode() {
         return Objects.hashCode(id);
     }
-
-
 }
