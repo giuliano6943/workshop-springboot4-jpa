@@ -59,6 +59,12 @@ public class Order implements Serializable {
     @OneToMany(mappedBy = "id.order")
     private Set<OrderItem> items = new HashSet<>();
 
+    // Mapeando a relação um para um com o id do payment
+    // o cascade é obrigatório
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    private Payment payment;
+
+
     // Construtor vazio (obrigatório para JPA)
     public Order() {}
 
@@ -95,6 +101,14 @@ public class Order implements Serializable {
 
     public User getClient() { return client; }
     public void setClient(User client) { this.client = client; }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
 
     public Set<OrderItem> getItems() { return items; }
 
