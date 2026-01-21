@@ -3,6 +3,7 @@ package com.educandoweb.course.services;
 import com.educandoweb.course.entities.User;
 import com.educandoweb.course.repositories.UserRepository;
 import com.educandoweb.course.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -60,16 +61,18 @@ public class UserService {
             throw new DataIntegrityViolationException(e.getMessage());
         }
     }
-
-
     /*
     * repository.getReferenceById(id) → Carrega uma referência para o usuário existente no banco
     * Se o ID não existir, vai lançar uma exceção quando tentar usar.
     */
     public User update(Long id, User obj) {
-        User entity = repository.getReferenceById(id);
-        updateData(entity,obj);
-        return repository.save(entity);
+        try {
+            User entity = repository.getReferenceById(id);
+            updateData(entity, obj);
+            return repository.save(entity);
+        }catch (EntityNotFoundException e){
+            throw new ResourceNotFoundException(id);
+        }
     }
 
     //Metodo diz quais campos poderão ser atualizados
