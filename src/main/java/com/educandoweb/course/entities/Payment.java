@@ -17,7 +17,7 @@ public class Payment implements Serializable {
     private Instant moment;
 
     @OneToOne
-    @MapsId
+    @MapsId // diz: o ID de Payment será o mesmo ID de Order
     @JsonIgnore
     private Order order;
 

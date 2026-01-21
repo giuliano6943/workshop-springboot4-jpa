@@ -40,7 +40,6 @@ public class Product implements Serializable {
     @OneToMany(mappedBy = "id.product")
     private Set<OrderItem> items = new HashSet<>();
 
-
     // Construtor vazio (obrigatório para JPA)
     public Product() {}
 
@@ -74,7 +73,8 @@ public class Product implements Serializable {
      * Apenas getter para evitar substituição da coleção inteira.
      */
     public Set<Category> getCategories() { return categories; }
-@JsonIgnore
+
+    @JsonIgnore
     public Set<Order> getOrders(){
         Set<Order> set = new HashSet<>();
         for(OrderItem x : items){

@@ -112,7 +112,10 @@ public class Order implements Serializable {
 
     public Set<OrderItem> getItems() { return items; }
 
-
+    //Metodo que calcula o total do pedido
+    //Ele passa dentro da lista de itens de pedidos
+    //E pega o subtotal de cada
+    //Atribuindo a variável sum
     public Double getTotal() {
         double sum = 0;
         for (OrderItem item : items) {

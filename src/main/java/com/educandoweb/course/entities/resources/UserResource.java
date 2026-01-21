@@ -47,17 +47,40 @@ public class UserResource {
         return ResponseEntity.ok().body(obj);
     }
 
+    /*
+    * @RequestBody pega o JSON enviado no corpo da requisição e converte para um objeto User
+    * ResponseEntity<User> -> Encapsula a resposta HTTP, permitindo controlar status code, headers e body
+    * URI uri = ServletUriComponentsBuilder -> Aqui você está construindo a URI do recurso recém-criado.
+    * fromCurrentRequest() -> Pegue a URL atual ex: /users
+    * .path("/{id}") -> Adiciona /{id} ao final
+    * .buildAndExpand(obj.getId()) -> Substitui o {id} pelo ID do usuário recem criado
+    * .toUri(); transforma o objeto em URI
+    *
+    * ResponseEntity.created(uri) -> Retorna um HTTP 201 Created e coloca no header
+    * service.insert(obj) → chama o metodo do service que salva o usuário no banco.
+    */
+
     @PostMapping
     public ResponseEntity<User> insert(@RequestBody User obj) {
-        URI uri =  ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        URI uri =  ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(obj.getId())
+                .toUri();
         return ResponseEntity.created(uri).body(service.insert(obj));
     }
 
+    //Exemplo: DELETE /users/5 → vai tentar excluir o usuário com id = 5.
+    //@PathVariable Long id -> Pega o ID passado na URL como parametro
+    //return ResponseEntity.noContent().build(); -> Retorna uma resposta http 204 no content
     @DeleteMapping(value = "/{id}" )
     public ResponseEntity<Void> deleteById(@PathVariable Long id){
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+    //@PutMapping("/{id}") → Esse metodo responde a requisições HTTP PUT.
+    //Exemplo: PUT /users/5 com um JSON no corpo da requisição.
+    // @PathVariable Long id → Captura o {id} da URL. Se você chamar PUT /users/5, o valor 5 vira o argumento id
+    //@RequestBody User obj → Pega o JSON enviado no corpo da requisição e converte para um objeto User.
 
     @PutMapping(value = "/{id}" )
     public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User obj) {

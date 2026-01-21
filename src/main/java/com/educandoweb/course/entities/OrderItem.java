@@ -80,6 +80,7 @@ public class OrderItem implements Serializable {
         return Objects.equals(id, orderItem.id);
     }
 
+    //Metodo subtotal do item de pedido
     public Double getSubtotal() {
         return price * quantity;
     }
