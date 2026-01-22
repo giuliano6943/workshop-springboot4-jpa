@@ -1,39 +1,46 @@
-🎯 Workshop Spring Boot JPA  
-Projeto desenvolvido como parte do curso *Java Spring Boot* do professor Nélio Alves (Udemy).
+# 🎯 Workshop Spring Boot JPA
 
-Este módulo aborda o desenvolvimento de APIs REST utilizando Spring Boot e JPA/Hibernate, aplicando boas práticas de arquitetura em camadas, persistência com Spring Data JPA e tratamento global de exceções.
+Projeto desenvolvido como parte do curso **Java Spring Boot** do professor **Nélio Alves (Udemy)**.
+
+Este módulo aborda o desenvolvimento de **APIs REST** utilizando **Spring Boot** e **JPA/Hibernate**, aplicando boas práticas de **arquitetura em camadas**, persistência com **Spring Data JPA** e tratamento global de exceções.
 
 ---
 
-🔷 Objetivo do Projeto  
+## 🔷 Objetivo do Projeto
+
 - Aprender os fundamentos de APIs REST com Spring Boot.  
 - Implementar operações básicas de persistência com Spring Data JPA.  
 - Aplicar arquitetura em camadas: controller, service, repository.  
-- Criar um projeto didático com entidades como User, Order, Product, etc.  
+- Criar um projeto didático com entidades como `User`, `Order`, `Product`, etc.  
 - Padronizar respostas de erro com tratamento global via `@ControllerAdvice`.
 
 ---
 
-⚙️ Tecnologias Utilizadas  
-☕ Java 17+  
-🌱 Spring Boot  
-🗃️ Spring Data JPA  
-🧪 H2 Database (banco em memória)  
-🛠️ Maven / IntelliJ IDEA para gerenciamento do projeto
+## ⚙️ Tecnologias Utilizadas
+
+- ☕ Java 17+  
+- 🌱 Spring Boot  
+- 🗃️ Spring Data JPA  
+- 🧪 H2 Database (banco em memória)  
+- 🛠️ Maven / IntelliJ IDEA para gerenciamento do projeto
 
 ---
 
-📁 Estrutura do Projeto  
-src/  
- └── entities/              # Classes de domínio (User, Order, etc.)  
- └── repositories/          # Interfaces JPA para acesso ao banco  
- └── services/              # Regras de negócio  
- └── resources/             # Controladores REST (endpoints)  
- └── exceptions/            # Tratamento global de erros
+## 📁 Estrutura do Projeto
+
+src/
+└── entities/              # Classes de domínio (User, Order, etc.)
+└── repositories/          # Interfaces JPA para acesso ao banco
+└── services/              # Regras de negócio
+└── resources/             # Controladores REST (endpoints)
+└── exceptions/            # Tratamento global de erros
+
+Código
 
 ---
 
-🔗 Endpoints Principais  
+## 🔗 Endpoints Principais
+
 - `GET /users` → lista todos os usuários  
 - `GET /users/{id}` → busca usuário por ID  
 - `POST /users` → insere novo usuário  
@@ -42,7 +49,8 @@ src/
 
 ---
 
-📄 Exemplo de Modelo de Dados  
+## 📄 Exemplo de Modelo de Dados
+
 ```json
 {
   "id": 1,
@@ -62,11 +70,11 @@ json
   "path": "/users/999"
 }
 🚀 Como Executar
-Clonar o repositório:
+Clonar o repositório
 
 bash
 git clone https://github.com/giuliano6943/workshop-springboot4-jpa.git
-Executar o projeto:
+Executar o projeto
 
 Abrir no IntelliJ IDEA ou outra IDE Java.
 
@@ -97,6 +105,8 @@ MongoDB
 E muito mais!
 
 🙌 Créditos
-🎓 Curso: Java COMPLETO: Programação Orientada a Objetos + Projetos – Nélio Alves (Udemy)
+🎓 Curso: Java COMPLETO: Programação Orientada a Objetos + Projetos - Nélio Alves (Udemy)
+
 👨‍💻 Autor do projeto: Giuliano
+
 👨‍🏫 Professor: Nélio Alves
