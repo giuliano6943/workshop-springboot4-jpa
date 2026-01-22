@@ -8,11 +8,11 @@ Este módulo aborda o desenvolvimento de **APIs REST** utilizando **Spring Boot*
 
 ## 🔷 Objetivo do Projeto
 
-- Aprender os fundamentos de APIs REST com Spring Boot.  
-- Implementar operações básicas de persistência com Spring Data JPA.  
-- Aplicar arquitetura em camadas: controller, service, repository.  
-- Criar um projeto didático com entidades como `User`, `Order`, `Product`, etc.  
-- Padronizar respostas de erro com tratamento global via `@ControllerAdvice`.
+- Aprender os fundamentos de APIs REST com Spring Boot  
+- Implementar operações básicas de persistência com Spring Data JPA  
+- Aplicar arquitetura em camadas: controller, service, repository  
+- Criar um projeto didático com entidades como `User`, `Order`, `Product`, etc  
+- Padronizar respostas de erro com tratamento global via `@ControllerAdvice`
 
 ---
 
@@ -22,7 +22,7 @@ Este módulo aborda o desenvolvimento de **APIs REST** utilizando **Spring Boot*
 - 🌱 Spring Boot  
 - 🗃️ Spring Data JPA  
 - 🧪 H2 Database (banco em memória)  
-- 🛠️ Maven / IntelliJ IDEA para gerenciamento do projeto
+- 🛠️ Maven / IntelliJ IDEA  
 
 ---
 
@@ -56,11 +56,15 @@ src/
   "email": "maria@gmail.com",
   "phone": "988888888"
 }
+```
 
-⚠️ Tratamento de Erros
+---
+
+## ⚠️ Tratamento de Erros
 
 Quando um recurso não é encontrado, a API retorna:
 
+```json
 {
   "timestamp": "2026-01-21T20:55:00Z",
   "status": 404,
@@ -68,47 +72,48 @@ Quando um recurso não é encontrado, a API retorna:
   "message": "Resource not found with id 999",
   "path": "/users/999"
 }
-🚀 Como Executar
+```
 
-Clonar o repositório
+---
+
+## 🚀 Como Executar
+
+### Clonar o repositório
+
+```bash
 git clone https://github.com/giuliano6943/workshop-springboot4-jpa.git
+```
 
-Executar o projeto
+### Executar o projeto
 
-Abrir no IntelliJ IDEA ou outra IDE Java
-
-Rodar a aplicação com:
-
+```bash
 mvn spring-boot:run
+```
 
-📚 Contexto Didático
+---
+
+## 📚 Contexto Didático
 
 Este projeto faz parte do módulo de Spring Boot e JPA do curso do Nélio Alves, considerado um dos mais completos de Java e desenvolvimento backend.
 
 O curso cobre:
 
-Java e OO avançado
+- Java e OO avançado  
+- UML  
+- JDBC  
+- JavaFX  
+- Spring Boot  
+- JPA / Hibernate  
+- MySQL  
+- MongoDB  
+- E muito mais  
 
-UML
+---
 
-JDBC
+## 🙌 Créditos
 
-JavaFX
+🎓 Curso: Java COMPLETO: Programação Orientada a Objetos + Projetos - Nélio Alves (Udemy)  
 
-Spring Boot
-
-JPA / Hibernate
-
-MySQL
-
-MongoDB
-
-E muito mais!
-
-🙌 Créditos
-
-🎓 Curso: Java COMPLETO: Programação Orientada a Objetos + Projetos - Nélio Alves (Udemy)
-
-👨‍💻 Autor do projeto: Giuliano
+👨‍💻 Autor do projeto: Giuliano  
 
 👨‍🏫 Professor: Nélio Alves
