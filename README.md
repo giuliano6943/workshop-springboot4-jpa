@@ -28,14 +28,12 @@ Este módulo aborda o desenvolvimento de **APIs REST** utilizando **Spring Boot*
 
 ## 📁 Estrutura do Projeto
 
-src/
-└── entities/              # Classes de domínio (User, Order, etc.)
-└── repositories/          # Interfaces JPA para acesso ao banco
-└── services/              # Regras de negócio
-└── resources/             # Controladores REST (endpoints)
-└── exceptions/            # Tratamento global de erros
-
-Código
+src/  
+└── entities/              # Classes de domínio (User, Order, etc.)  
+└── repositories/          # Interfaces JPA para acesso ao banco  
+└── services/              # Regras de negócio  
+└── resources/             # Controladores REST (endpoints)  
+└── exceptions/            # Tratamento global de erros  
 
 ---
 
@@ -45,7 +43,7 @@ Código
 - `GET /users/{id}` → busca usuário por ID  
 - `POST /users` → insere novo usuário  
 - `PUT /users/{id}` → atualiza usuário existente  
-- `DELETE /users/{id}` → remove usuário por ID
+- `DELETE /users/{id}` → remove usuário por ID  
 
 ---
 
@@ -58,10 +56,11 @@ Código
   "email": "maria@gmail.com",
   "phone": "988888888"
 }
+
 ⚠️ Tratamento de Erros
+
 Quando um recurso não é encontrado, a API retorna:
 
-json
 {
   "timestamp": "2026-01-21T20:55:00Z",
   "status": 404,
@@ -70,20 +69,22 @@ json
   "path": "/users/999"
 }
 🚀 Como Executar
-Clonar o repositório
 
-bash
+Clonar o repositório
 git clone https://github.com/giuliano6943/workshop-springboot4-jpa.git
+
 Executar o projeto
 
-Abrir no IntelliJ IDEA ou outra IDE Java.
+Abrir no IntelliJ IDEA ou outra IDE Java
 
 Rodar a aplicação com:
 
-bash
 mvn spring-boot:run
+
 📚 Contexto Didático
+
 Este projeto faz parte do módulo de Spring Boot e JPA do curso do Nélio Alves, considerado um dos mais completos de Java e desenvolvimento backend.
+
 O curso cobre:
 
 Java e OO avançado
@@ -105,6 +106,7 @@ MongoDB
 E muito mais!
 
 🙌 Créditos
+
 🎓 Curso: Java COMPLETO: Programação Orientada a Objetos + Projetos - Nélio Alves (Udemy)
 
 👨‍💻 Autor do projeto: Giuliano
